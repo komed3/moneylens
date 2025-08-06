@@ -14,6 +14,7 @@
     --secondary: #06318e;
     --boxbg: #fffb;
     --font: 'Mozilla Headline', sans-serif;
+    --shadow: 0 0 12px rgba( 6 31 124 / 0.08 );
 }
 
 *, *::before, *::after {
@@ -42,6 +43,7 @@ body {
     padding: 1.6rem 2rem;
     background-color: var( --boxbg );
     border-radius: 24px;
+    box-shadow: var( --shadow );
 }
 
 /** Header */
