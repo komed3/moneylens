@@ -4,8 +4,9 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>MoneyLens — See your money through a lens</title>
-        <link rel="stylesheet" href="statics/style.css" />
-        <script src="statics/script.js" defer></script>
+        <link rel="icon" type="image/x-icon" href="/favicon.ico">
+        <link rel="stylesheet" href="/static/style.min.css" />
+        <script src="/statics/script.js" defer></script>
     </head>
     <body>
         <header>
@@ -14,8 +15,8 @@
         </header>
         <main>
             <section class="input-section">
-            <label for="amount">Enter amount in USD:</label>
-            <input type="number" id="amount" placeholder="e.g. 1000" />
+            <label for="amount">Enter any amount in USD:</label>
+            <input type="number" id="amount" min="1" step="1" placeholder="e.g. 1000" />
             </section>
             <section class="grid" id="output-grid">
                 <!-- Dynamic cards will be inserted here -->
