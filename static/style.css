@@ -8,23 +8,55 @@
 /** Global */
 
 :root {
-    --color: #212121;
+    --text: #212121;
     --bg: #f6f8fa;
     --light: #fed46e;
-    --secondary: #0057ff;
+    --primary: #0057ff;
     --box: #fffb;
     --muted: #6b7280;
-    --font: 'Mozilla Headline', sans-serif;
+    --border: 1.5px solid #e5e7eb;
     --shadow: 0 4px 32px 0 rgba( 0 87 255 / 0.08 );
+    --font: 'Mozilla Headline', sans-serif;
 }
 
 *, *::before, *::after {
     box-sizing: border-box;
+    outline: 0 none;
+    cursor: default;
 }
 
 a, a:link, a:visited, a:hover {
     text-decoration: underline;
-    color: var( --secondary );
+    color: var( --primary );
+    cursor: pointer;
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 0.7rem 1.2rem;
+    font-family: var( --font );
+    font-size: 1.3rem;
+    color: var( --text );
+    background: var( --bg );
+    border: var( --border );
+    border-radius: 12px;
+    cursor: text;
+}
+
+input[type="number"]:active,
+input[type="number"]:focus {
+    border-color: var( --primary );
+}
+
+button {
+    padding: 0.7rem 1.2rem;
+    font-family: var( --font );
+    font-size: 1.3rem;
+    color: var( --bg );
+    background: var( --primary );
+    border: 0;
+    border-radius: 12px;
+    cursor: pointer;
 }
 
 body {
@@ -33,7 +65,7 @@ body {
     text-underline-offset: 12%;
     font-family: var( --font );
     font-size: 1.2rem;
-    color: var( --color );
+    color: var( --text );
     background-color: var( --bg );
 }
 
@@ -60,6 +92,7 @@ header {
 header img {
     width: 120px;
     height: 120px;
+    filter: drop-shadow( 0 2px 8px var( --shadow ) );
 }
 
 header h1 {
@@ -87,4 +120,16 @@ footer {
 
 main {
     margin: 2rem 0;
+}
+
+.inputform {
+    align-items: center;
+    white-space: nowrap;
+}
+
+.inputform label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: var( --primary );
 }
