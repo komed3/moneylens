@@ -1,5 +1,8 @@
-// Global data, loaded from JSON
+/** Global data, loaded from JSON */
 let data = {};
+
+/** Debounce input calculation trigger */
+let debounceTimeout = null;
 
 /** Utility to format number with tseps */
 function formatNumber ( num, max = 0, min = 0 ) {
@@ -74,21 +77,43 @@ function handleInput ( e ) {
     // Avoid leading zeros
     rawValue = rawValue.replace( /^0+/, '' );
 
-    // If empty, do not proceed
-    if ( ! rawValue ) {
-
-        inputField.value = '';
-        return;
-
-    }
+    // If empty, set to "0"
+    if ( ! rawValue ) rawValue = 0;
 
     // Format number with thousand separators
     const formatted = formatNumber( rawValue );
     inputField.value = formatted;
 
+    calculate_metrics( rawValue );
+
 }
 
-// Add event listener on DOM load
+/** Calculate metrics */
+function calculate_metrics ( val ) {
+
+    clearTimeout( debounceTimeout );
+
+    debounceTimeout = setTimeout( () => {
+
+        calc_metric__gold( val );
+
+    }, 300 );
+
+}
+
+/** Calculate gold weight and sphere diameter */
+function calc_metric__gold ( val ) {
+
+    const weight = val / data.gold_price;
+    const volume = weight / 19.32;
+    const diameter = 2 * Math.cbrt( ( 3 * volume ) / ( 4 * Math.PI ) );
+
+    animateValue( '__gold_weight', weight, 3 );
+    animateValue( '__gold_diameter', diameter, 3 );
+
+}
+
+/** Add event listener on DOM load */
 document.addEventListener( 'DOMContentLoaded', () => {
 
     fetch( './data.json' )
