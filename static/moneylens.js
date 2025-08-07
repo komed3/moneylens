@@ -101,6 +101,9 @@ function calculate_metrics ( val ) {
         calc_metric__savings( val );
         calc_metric__expenses( val );
         calc_metric__burger( val );
+        calc_metric__hardware( val );
+        calc_metric__oil( val );
+        calc_metric__btc( val );
 
     }, 300 );
 
@@ -174,6 +177,37 @@ function calc_metric__burger ( val ) {
     const burger = val / data.burger;
 
     animateValue( '__burger_amount', burger, 0 );
+
+}
+
+/** Calculate hardware and electronic equivalents */
+function calc_metric__hardware ( val ) {
+
+    const gpu = val / data.gpu;
+    const iphone = val / data.iphone;
+    const console = val / data.console;
+
+    animateValue( '__hardware_gpu', gpu, 0 );
+    animateValue( '__hardware_iphone', iphone, 0 );
+    animateValue( '__hardware_console', console, 0 );
+
+}
+
+/** Calculate barrels of crude oil */
+function calc_metric__oil ( val ) {
+
+    const barrel = val / data.crude_oil;
+
+    animateValue( '__oil_barrel', barrel, 3 );
+
+}
+
+/** Calculate the amount of Bitcoin */
+function calc_metric__btc ( val ) {
+
+    const btc = val / data.btc;
+
+    animateValue( '__btc_amount', btc, 3 );
 
 }
 
