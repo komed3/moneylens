@@ -104,6 +104,10 @@ function calculate_metrics ( val ) {
         calc_metric__hardware( val );
         calc_metric__oil( val );
         calc_metric__btc( val );
+        calc_metric__work( val );
+        calc_metric__global( val );
+        calc_metric__giving( val );
+        calc_metric__bin( val );
 
     }, 300 );
 
@@ -124,13 +128,13 @@ function calc_metric__gold ( val ) {
 /** Calculate number of US dollar coins and resulting physical dimensions */
 function calc_metric__coins ( val ) {
 
-    const weight = val * data.coin_weight / 1000;
-    const height = val * data.coin_height / 100;
-    const area = val * Math.PI * Math.pow( data.coin_diameter / 2, 2 ) * 2.4711e-8;
+    const weight = val * data.coin_weight / 1000000;
+    const height = val * data.coin_height / 100000;
+    const fields = val / ( 91440 * 48800 / Math.pow( data.coin_diameter, 2 ) );
 
     animateValue( '__coins_weight', weight, 3 );
-    animateValue( '__coins_hight', height, 3 );
-    animateValue( '__coins_area', area, 3 );
+    animateValue( '__coins_height', height, 3 );
+    animateValue( '__coins_fields', fields, 3 );
 
 }
 
@@ -208,6 +212,46 @@ function calc_metric__btc ( val ) {
     const btc = val / data.btc;
 
     animateValue( '__btc_amount', btc, 3 );
+
+}
+
+/** Calculate the amount of working hours (federal minimum wage) */
+function calc_metric__work ( val ) {
+
+    const hrs = val / data.fed_wage;
+    const months = hrs / 160;
+
+    animateValue( '__work_hrs', hrs, 0 );
+    animateValue( '__work_months', months, 0 );
+
+}
+
+/** Calculate the percentage of global wealth */
+function calc_metric__global ( val ) {
+
+    const pct = val * 100 / data.global_wealth;
+
+    animateValue( '__global_wealth', pct, 10 );
+
+}
+
+/** Calculate some non-profit equivalents */
+function calc_metric__giving ( val ) {
+
+    const trees = val / data.tree;
+    const forest = val / data.forest_sqft;
+
+    animateValue( '__giving_tree', trees, 0 );
+    animateValue( '__giving_forest', forest, 0 );
+
+}
+
+/** Calculate the percentage of the money bin */
+function calc_metric__bin ( val ) {
+
+    const pct = val * 100 / data.money_bin;
+
+    animateValue( '__money_bin', pct, 8 );
 
 }
 
