@@ -270,7 +270,7 @@ function calc_metric__global ( val ) {
 function calc_metric__giving ( val ) {
 
     const trees = val / data.tree;
-    const forest = val / data.forest_sqft;
+    const forest = val / data.forest;
 
     animateValue( '__giving_tree', trees, 0 );
     animateValue( '__giving_forest', forest, 0 );
