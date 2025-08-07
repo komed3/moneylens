@@ -12,7 +12,11 @@
     --text: #212121;
     --bg: #fefefe;
     --gray: #6b7280;
+    --light: #f6f8fa;
     --primary: #0057ff;
+    --accent: #ffb800;
+    --border: 1px solid var( --text );
+    --shadow: 6px 6px 0 var( --accent );
 }
 
 *, *::before, *::after {
@@ -109,6 +113,16 @@ a, a:link, a:visited, a:hover {
     background: url( ./icons/world.svg );
 }
 
+/** Box */
+
+.box {
+    width: 100%;
+    margin: 0 1rem 1rem 0;
+    padding: 1.4rem 1.8rem;
+    border: var( --border );
+    box-shadow: var( --shadow );
+}
+
 /** Header */
 
 header {
@@ -131,6 +145,34 @@ header p {
     font-size: 2.4rem;
     font-weight: 100;
     color: var( --gray );
+}
+
+/** Main */
+
+main {
+    margin: 2rem;
+}
+
+/** Input Form */
+
+.inputform .box {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.inputform input {
+    flex: 1;
+    padding: 0.8rem 1.2rem;
+    text-align: right;
+    font-family: var( --font );
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var( --text );
+    background: var( --light );
+    border: 0;
+    cursor: text;
 }
 
 /** Footer */
