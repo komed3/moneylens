@@ -204,9 +204,14 @@ function calc_metric__burger ( val ) {
 /** Calculate the global weath rank (top % of world population) */
 function calc_metric__gwr ( val ) {
 
-    const pct = 100 - 100 / ( 1 + Math.pow( Math.E, -1.3 * ( Math.log( val ) - 10 ) ) );
+    const pct = Math.max( 0, Math.min( 100, 100 - 100 / (
+        1 + Math.pow( Math.E, -1.3 * ( Math.log( val ) - 10 ) )
+    ) ) );
 
-    animateValue( '__gwr_pct', Math.max( 0, Math.min( 100, pct ) ), 2 );
+    const rank = data.population / 100 * pct;
+
+    animateValue( '__gwr_pct', pct, 2 );
+    animateValue( '__gwr_rank', rank, 0 );
 
 }
 
