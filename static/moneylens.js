@@ -99,6 +99,8 @@ function calculate_metrics ( val ) {
         calc_metric__coins( val );
         calc_metric__diamond( val );
         calc_metric__savings( val );
+        calc_metric__expenses( val );
+        calc_metric__burger( val );
 
     }, 300 );
 
@@ -146,6 +148,32 @@ function calc_metric__savings ( val ) {
 
     animateValue( '__household_savings', savings, 3 );
     animateValue( '__household_income', income, 3 );
+
+}
+
+/** Calculate living expenses in some countries */
+function calc_metric__expenses ( val ) {
+
+    const us = val / data.expenses_us;
+    const de = val / data.expenses_de;
+    const ch = val / data.expenses_ch;
+    const india = val / data.expenses_in;
+    const pk = val / data.expenses_pk;
+
+    animateValue( '__expenses_us', us, 0 );
+    animateValue( '__expenses_de', de, 0 );
+    animateValue( '__expenses_ch', ch, 0 );
+    animateValue( '__expenses_in', india, 0 );
+    animateValue( '__expenses_pk', pk, 0 );
+
+}
+
+/** Calculate the number of burger */
+function calc_metric__burger ( val ) {
+
+    const burger = val / data.burger;
+
+    animateValue( '__burger_amount', burger, 0 );
 
 }
 
