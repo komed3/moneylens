@@ -4,8 +4,9 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>MoneyLens — See your money through a new lens</title>
-        <link rel="icon" type="image/x-icon" href="/favicon.ico">
-        <link rel="stylesheet" href="/static/style.min.css" />
+        <link rel="icon" type="image/x-icon" href="./favicon.ico">
+        <link rel="stylesheet" href="./static/style.min.css" />
+        <script src="./static/moneylens.min.js" defer></script>
     </head>
     <body>
         <header role="banner">
@@ -28,18 +29,50 @@
                         <span>Gold Equivalent</span>
                     </h3>
                     <p>
-                        Assuming a gold price of approximately <b>$70 per gram</b>, the equivalent
+                        Assuming a gold price of approximately <b>$100 per gram</b>, the equivalent
                         value of your money is as follows. The calculation of weight and size of the
                         gold sphere assumes 100% fineness.
                     </p>
                     <ul>
                         <li>
                             <label>Weight in grams</label>
-                            <b>12.738</b>
+                            <b data-value="__gold_weight">0.000</b>
                         </li>
                         <li>
                             <label>Sphere diameter in cm</label>
-                            <b>0.327</b>
+                            <b data-value="__gold_diameter">0.000</b>
+                        </li>
+                    </ul>
+                </div>
+                <div class="item box">
+                    <h3>
+                        <i class="icon oil"></i>
+                        <span>Crude Oil</span>
+                    </h3>
+                    <p>
+                        Supposing a price of approximately <b>$65 per barrel</b> of crude oil, the
+                        following equivalent applies to your money.
+                    </p>
+                    <ul>
+                        <li>
+                            <label>Barrel crude oil</label>
+                            <b data-value="__oil_barrel">0.000</b>
+                        </li>
+                    </ul>
+                </div>
+                <div class="item box">
+                    <h3>
+                        <i class="icon btc"></i>
+                        <span>Bitcoin</span>
+                    </h3>
+                    <p>
+                        With an approximate value of <b>$100,000 per Bitcoin</b>, you could currently
+                        purchase the following amount of digital assets with your money.
+                    </p>
+                    <ul>
+                        <li>
+                            <label>Bitcoin</label>
+                            <b data-value="__btc_coins">0.000</b>
                         </li>
                     </ul>
                 </div>
