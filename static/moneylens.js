@@ -47,6 +47,19 @@ function animateValue ( key, newValue, decimals = 0, duration = 600 ) {
 
 }
 
+/** Initialize displayed data values from JSON */
+function insertDataValues ( dataObj ) {
+
+    document.querySelectorAll( '[data-info]' ).forEach( el => {
+
+        const key = el.getAttribute( 'data-info' );
+
+        if ( key in dataObj ) el.textContent = formatNumber( dataObj[ key ], 2, 0 );
+
+    } );
+
+}
+
 /** Sanitize and format input */
 function handleInput ( e ) {
 
@@ -74,6 +87,11 @@ function handleInput ( e ) {
 
 // Add event listener on DOM load
 document.addEventListener( 'DOMContentLoaded', () => {
+
+    fetch( './data.json' )
+        .then( res => res.json() )
+        .then( data => insertDataValues( data ) )
+        .catch( err => console.error( 'Error loading JSON:', err ) );
 
     const input = document.getElementById( 'input' );
 
