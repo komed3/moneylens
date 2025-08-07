@@ -1,3 +1,6 @@
+// Global data, loaded from JSON
+let data = {};
+
 /** Utility to format number with tseps */
 function formatNumber ( num, max = 0, min = 0 ) {
 
@@ -90,8 +93,13 @@ document.addEventListener( 'DOMContentLoaded', () => {
 
     fetch( './data.json' )
         .then( res => res.json() )
-        .then( data => insertDataValues( data ) )
-        .catch( err => console.error( 'Error loading JSON:', err ) );
+        .then( ( json ) => {
+            data = json;
+            insertDataValues( data );
+        } )
+        .catch( ( err ) => {
+            console.error( 'Error loading JSON:', err )
+        } );
 
     const input = document.getElementById( 'input' );
 
