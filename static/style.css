@@ -67,8 +67,20 @@ a, a:link, a:visited, a:hover {
     height: 48px;
 }
 
+.icon.bag {
+    background: url( ./icons/bag.svg );
+}
+
 .icon.btc {
     background: url( ./icons/btc.svg );
+}
+
+.icon.burger {
+    background: url( ./icons/burger.svg );
+}
+
+.icon.chip {
+    background: url( ./icons/chip.svg );
 }
 
 .icon.coins {
@@ -101,6 +113,10 @@ a, a:link, a:visited, a:hover {
 
 .icon.share {
     background: url( ./icons/share.svg );
+}
+
+.icon.tree {
+    background: url( ./icons/tree.svg );
 }
 
 .icon.wallet {
