@@ -96,6 +96,9 @@ function calculate_metrics ( val ) {
     debounceTimeout = setTimeout( () => {
 
         calc_metric__gold( val );
+        calc_metric__coins( val );
+        calc_metric__diamond( val );
+        calc_metric__savings( val );
 
     }, 300 );
 
@@ -110,6 +113,39 @@ function calc_metric__gold ( val ) {
 
     animateValue( '__gold_weight', weight, 3 );
     animateValue( '__gold_diameter', diameter, 3 );
+
+}
+
+/** Calculate number of US dollar coins and resulting physical dimensions */
+function calc_metric__coins ( val ) {
+
+    const weight = val * data.coin_weight / 1000;
+    const height = val * data.coin_height / 100;
+    const area = val * Math.PI * Math.pow( data.coin_diameter / 2, 2 ) * 2.4711e-8;
+
+    animateValue( '__coins_weight', weight, 3 );
+    animateValue( '__coins_hight', height, 3 );
+    animateValue( '__coins_area', area, 3 );
+
+}
+
+/** Calculate the Diamond carat equivalent */
+function calc_metric__diamond ( val ) {
+
+    const carat = val / data.diamond_carat;
+
+    animateValue( '__diamond_carat', carat, 3 );
+
+}
+
+/** Calculate the avg. US household savings and income equivalent */
+function calc_metric__savings ( val ) {
+
+    const savings = val / data.savings;
+    const income = val / ( data.income / 12 );
+
+    animateValue( '__household_savings', savings, 3 );
+    animateValue( '__household_income', income, 3 );
 
 }
 
