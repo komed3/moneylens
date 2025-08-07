@@ -102,6 +102,7 @@ function calculate_metrics ( val ) {
         calc_metric__interest( val );
         calc_metric__expenses( val );
         calc_metric__burger( val );
+        calc_metric__gwr( val );
         calc_metric__hardware( val );
         calc_metric__oil( val );
         calc_metric__btc( val );
@@ -197,6 +198,15 @@ function calc_metric__burger ( val ) {
     const burger = val / data.burger;
 
     animateValue( '__burger_amount', burger, 0 );
+
+}
+
+/** Calculate the global weath rank (top % of world population) */
+function calc_metric__gwr ( val ) {
+
+    const pct = 100 - 100 / ( 1 + Math.pow( Math.E, -1.3 * ( Math.log( val ) - 10 ) ) );
+
+    animateValue( '__gwr_pct', Math.max( 0, Math.min( 100, pct ) ), 2 );
 
 }
 
