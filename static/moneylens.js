@@ -39,7 +39,7 @@ function animateValue ( key, newValue, decimals = 0, duration = 600 ) {
 
             }
 
-        }
+        };
 
         requestAnimationFrame( update );
 
