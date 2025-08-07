@@ -15,8 +15,9 @@
     --light: #f6f8fa;
     --primary: #0057ff;
     --accent: #ffb800;
-    --border: 1px solid var( --text );
     --shadow: 6px 6px 0 var( --accent );
+    --border: 1px solid var( --text );
+    --dashed: 1px dashed var( --gray );
 }
 
 *, *::before, *::after {
@@ -170,25 +171,66 @@ h2 {
 h2 hr {
     flex: 1;
     border: 0;
-    border-bottom: 1px dashed var( --gray );
+    border-bottom: var( --dashed );
 }
 
 /** Grid */
 
 .grid {
-    display: grid;
-    grid-template-columns: repeat( 3, 1fr );
-    grid-auto-flow: row dense;
-    gap: 2rem;
+    column-count: 2;
+    column-gap: 2rem;
     margin: 4rem 0;
 }
 
-.grid .item.long {
-    grid-column: span 3;
+.grid .item {
+    break-inside: avoid;
+    margin-bottom: 2rem;
 }
 
-.grid .item.medium {
-    grid-column: span 2;
+.grid .item h3 {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    gap: 1.2rem;
+    margin: 0 0 1.4rem;
+    font-size: 1.4rem;
+    color: var( --primary );
+}
+
+.grid .item p {
+    margin: 1.4rem 0;
+    line-height: 1.4;
+    font-size: 1.1rem;
+}
+
+.grid .item ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.grid .item ul li {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: baseline;
+    gap: 1rem;
+}
+
+.grid .item ul li:not( :last-child ) {
+    margin-bottom: 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: var( --dashed );
+}
+
+.grid .item ul li label {
+    flex: 1;
+    font-weight: 100;
+}
+
+.grid .item ul li b {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: 0.02rem;
 }
 
 /** Input Form */
